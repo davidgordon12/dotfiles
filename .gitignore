@@ -15,6 +15,7 @@ htop/
 evolution/
 assets/
 Code/
+font-manager/
 dconf/
 enchant/
 mimeapps.list
@@ -26,4 +27,3 @@ xdg-terminals.list
 gnome-initial-setup-done
 GNOME-xdg-terminals.list
 .gsd-keyboard.settings-ported
-
