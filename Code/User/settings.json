@@ -1,8 +1,0 @@
-{
-    "workbench.sideBar.location": "right",
-    "workbench.startupEditor": "none",
-    "git.confirmSync": false,
-    "git.autofetch": true,
-    "workbench.iconTheme": "catppuccin-mocha",
-    "workbench.colorTheme": "Catppuccin Mocha"
-}

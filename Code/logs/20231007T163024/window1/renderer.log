@@ -1,5 +1,0 @@
-2023-10-07 16:30:26.173 [warning] Via 'product.json#extensionEnabledApiProposals' extension 'ms-dotnettools.dotnet-interactive-vscode' wants API proposal 'languageConfigurationAutoClosingPairs' but that proposal DOES NOT EXIST. Likely, the proposal has been finalized (check 'vscode.d.ts') or was abandoned.
-2023-10-07 16:30:26.184 [warning] Via 'product.json#extensionEnabledApiProposals' extension 'github.copilot-chat' wants API proposal 'terminalContextMenu' but that proposal DOES NOT EXIST. Likely, the proposal has been finalized (check 'vscode.d.ts') or was abandoned.
-2023-10-07 16:30:26.585 [info] Started initializing default profile extensions in extensions installation folder. file:///home/akali/.vscode/extensions
-2023-10-07 16:30:27.313 [info] Completed initializing default profile extensions in extensions installation folder. file:///home/akali/.vscode/extensions
-2023-10-07 16:30:29.517 [info] [perf] Render performance baseline is 32ms
