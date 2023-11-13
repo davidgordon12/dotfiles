@@ -42,10 +42,8 @@ P.S. You can delete this when you're done too. It's your config now :)
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
-
--- disable netrw at the very start of your init.lua
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+vim.opt.relativenumber = true
+vim.keymap.set("n", "<leader>fe", ":Ex<Return>")
 
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
@@ -69,8 +67,6 @@ vim.opt.rtp:prepend(lazypath)
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
 require('lazy').setup({
-  'nvim-tree/nvim-tree.lua',
-
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
@@ -79,7 +75,6 @@ require('lazy').setup({
   'tpope/vim-sleuth',
 
   -- NOTE: This is where your plugins related to LSP can be installed.
-  --  The configuration is done below. Search for lspconfig to find it below.
   {
     -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
@@ -207,6 +202,7 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
+      { "windwp/nvim-ts-autotag" },
     },
     build = ':TSUpdate',
   },
@@ -323,9 +319,6 @@ vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
 
--- Open nvim-tree
-vim.keymap.set('n', '<leader>fe', ':NvimTreeOpen<Return>')
-
 -- New tab
 vim.keymap.set('n', '<C-t>', ':tabedit<Return>')
 vim.keymap.set('n', '<C-n>', ':tabnext<Return>')
@@ -341,11 +334,12 @@ vim.defer_fn(function()
     ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim' },
   
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
-    auto_install = false,
-  
+    auto_install = true,
     highlight = { enable = true },
     indent = { enable = true },
-    incremental_selection = {
+    autopairs = { enable = true },
+    opts = { autopairs = { enable = true }, },
+        incremental_selection = {
       enable = true,
       keymaps = {
         init_selection = '<c-space>',
@@ -353,6 +347,10 @@ vim.defer_fn(function()
         scope_incremental = '<c-s>',
         node_decremental = '<M-space>',
       },
+    },
+    autotag = {
+      enable = true,
+      loaded = true,
     },
     textobjects = {
       select = {
@@ -565,19 +563,3 @@ cmp.setup {
 
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
-
--- OR setup with some options
-require("nvim-tree").setup({
-  sort_by = "case_sensitive",
-  view = {
-    side = 'right',
-    width = 30,
-  },
-  renderer = {
-    group_empty = true,
-  },
-  filters = {
-    dotfiles = true,
-  },
-})
-
