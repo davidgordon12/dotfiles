@@ -7,19 +7,19 @@
 Kickstart.nvim is *not* a distribution.
 
 Kickstart.nvim is a template for your own configuration.
-  The goal is that you can read every line of code, top-to-bottom, understand
-  what your configuration is doing, and modify it to suit your needs.
+The goal is that you can read every line of code, top-to-bottom, understand
+what your configuration is doing, and modify it to suit your needs.
 
-  Once you've done that, you should start exploring, configuring and tinkering to
-  explore Neovim!
+Once you've done that, you should start exploring, configuring and tinkering to
+explore Neovim!
 
-  If you don't know anything about Lua, I recommend taking some time to read through
-  a guide. One possible example:
-  - https://learnxinyminutes.com/docs/lua/
+If you don't know anything about Lua, I recommend taking some time to read through
+a guide. One possible example:
+- https://learnxinyminutes.com/docs/lua/
 
 
-  And then you can explore or search through `:help lua-guide`
-  - https://neovim.io/doc/user/lua-guide.html
+And then you can explore or search through `:help lua-guide`
+- https://neovim.io/doc/user/lua-guide.html
 
 
 Kickstart Guide:
@@ -44,6 +44,74 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.opt.relativenumber = true
 vim.keymap.set("n", "<leader>fe", ":Ex<Return>")
+
+vim.api.nvim_create_autocmd('ColorScheme', {
+  callback = function()
+    vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+    vim.cmd("hi NonText ctermbg=NONE")
+    vim.cmd("hi Normal guibg=NONE ctermbg=NONE")
+    vim.cmd("hi NormalNC guibg=NONE ctermbg=NONE")
+    vim.cmd("hi NeoTreeNormal guibg=NONE ctermbg=NONE")
+    vim.cmd("hi NeoTreeNormalNC guibg=NONE ctermbg=NONE")
+    vim.cmd("hi NeoTreeTabInactive guibg=NONE ctermbg=NONE")
+    vim.cmd("hi NeoTreeTabActive guibg=NONE ctermbg=NONE")
+    vim.cmd("hi Normal guibg=none ctermbg=none")
+    vim.cmd("hi LineNr guibg=none ctermbg=none")
+    vim.cmd("hi Folded guibg=none ctermbg=none")
+    vim.cmd("hi NonText guibg=none ctermbg=none")
+    vim.cmd("hi SpecialKey guibg=none ctermbg=none")
+    vim.cmd("hi VertSplit guibg=none ctermbg=none")
+    vim.cmd("hi SignColumn guibg=none ctermbg=none")
+    vim.cmd("hi EndOfBuffer guibg=none ctermbg=none")
+    vim.cmd("hi StartOfBuffer guibg=none ctermbg=none")
+  end,
+})
+
+local colors = {
+  darkgray = "#16161d",
+  gray = "#727169",
+  innerbg = nil,
+  outerbg = "#16161D",
+  normal = "#7e9cd8",
+  insert = "#98bb6c",
+  visual = "#ffa066",
+  replace = "#e46876",
+  command = "#e6c384",
+}
+
+local theme = {
+  inactive = {
+    a = { fg = colors.gray, bg = colors.outerbg, gui = "bold" },
+    b = { fg = colors.gray, bg = colors.outerbg },
+    c = { fg = colors.gray, bg = colors.innerbg },
+  },
+  visual = {
+    a = { fg = colors.darkgray, bg = colors.visual, gui = "bold" },
+    b = { fg = colors.gray, bg = colors.outerbg },
+    c = { fg = colors.gray, bg = colors.innerbg },
+  },
+  replace = {
+    a = { fg = colors.darkgray, bg = colors.replace, gui = "bold" },
+    b = { fg = colors.gray, bg = colors.outerbg },
+    c = { fg = colors.gray, bg = colors.innerbg },
+  },
+  normal = {
+    a = { fg = colors.darkgray, bg = colors.normal, gui = "bold" },
+    b = { fg = colors.gray, bg = colors.outerbg },
+    c = { fg = colors.gray, bg = colors.innerbg },
+  },
+  insert = {
+    a = { fg = colors.darkgray, bg = colors.insert, gui = "bold" },
+    b = { fg = colors.gray, bg = colors.outerbg },
+    c = { fg = colors.gray, bg = colors.innerbg },
+  },
+  command = {
+    a = { fg = colors.darkgray, bg = colors.command, gui = "bold" },
+    b = { fg = colors.gray, bg = colors.outerbg },
+    c = { fg = colors.gray, bg = colors.innerbg },
+  },
+}
 
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
@@ -156,12 +224,12 @@ require('lazy').setup({
     -- See `:help lualine.txt`
     opts = {
       options = {
-        icons_enabled = false,
-        theme = 'catppuccin',
+        icons_enabled = true,
+        theme = theme,
         component_separators = '|',
         section_separators = '',
-      },
-    },
+      }
+    }
   },
 
   {
@@ -332,14 +400,14 @@ vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
     -- Add languages to be installed here that you want installed for treesitter
     ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim' },
-  
+
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
     auto_install = true,
     highlight = { enable = true },
     indent = { enable = true },
     autopairs = { enable = true },
     opts = { autopairs = { enable = true }, },
-        incremental_selection = {
+    incremental_selection = {
       enable = true,
       keymaps = {
         init_selection = '<c-space>',
