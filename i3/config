@@ -8,17 +8,13 @@
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
+exec --no-startup-id feh --bg-fill ~/Pictures/wp.jpg
 
 set $mod Mod1
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%- 
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set 5%+
-
-# Audio controls Macbook Pro
-# bindsym XF86AudioLowerVolume exec amixer set Master -q 5%-
-# bindsym XF86AudioRaiseVolume exec amixer set Master -q 5%+
-# bindsym XF86AudioMute exec amixer set Master 0
 
 # Audio controls desktop
 bindsym Mod1+minus exec amixer set Master -q 5%-
@@ -27,8 +23,6 @@ bindsym Mod1+equal exec amixer set Master -q 5%+
 # Personal shortcuts
 bindsym $mod+Shift+w exec firefox
 bindsym $mod+m move workspace to output left
-
-exec --no-startup-id feh --bg-fill ~/Pictures/wp.jpg
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
