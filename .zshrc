@@ -105,3 +105,6 @@ if [ "$TMUX" = "" ]; then tmux; fi
 source <(ng completion script)
 
 PATH=${PATH}:"${HOME}/.local/bin"
+PATH=${PATH}:"/usr/lib64/zed"
+PATH=${PATH}:"/usr/bin/go/bin"
+PATH=${PATH}:"/usr/cross/bin"
