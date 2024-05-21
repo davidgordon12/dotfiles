@@ -20,14 +20,13 @@ bindsym XF86AudioLowerVolume exec amixer set Master -q 5%-
 bindsym XF86AudioRaiseVolume exec amixer set Master -q 5%+
 bindsym XF86AudioMute exec amixer set Master 0
 
-# Audio controls desktop
-bindsym Mod1+minus exec amixer set Master -q 5%-
+# Audio controls desktop bindsym Mod1+minus exec amixer set Master -q 5%-
 bindsym Mod1+equal exec amixer set Master -q 5%+
 
-exec picom
+exec picom --no-fading-openclose --fade-in-step=1 --fade-out-step=1
 
 # Personal shortcuts
-bindsym $mod+Shift+w exec env GDK_DPI_SCALE=1.15 firefox
+bindsym $mod+Shift+w exec env GDK_DPI_SCALE=2 firefox
 bindsym $mod+m move workspace to output left
 
 exec --no-startup-id feh --bg-fill ~/Pictures/wp.jpg
@@ -74,10 +73,10 @@ bindsym $mod+Shift+d exec --no-startup-id rofi -show window
 bindsym $mod+Shift+a exec --no-startup-id ranger
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -86,28 +85,22 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+# bindsym $mod+h split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+# bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+# bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
+# bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
