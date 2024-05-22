@@ -170,10 +170,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -216,13 +216,12 @@ set $base #eff1f5
 set $mantle #e6e9ef
 set $crust #dce0e8
 
-
 # target                 title     bg    text   indicator  border
-client.focused           $lavender $base $text  $rosewater $lavender
-client.focused_inactive  $overlay0 $base $text  $rosewater $overlay0
-client.unfocused         $overlay0 $base $text  $rosewater $overlay0
-client.urgent            $peach    $base $peach $overlay0  $peach
-client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
+client.focused           $lavender $base $text  $mantle $mantle
+client.focused_inactive  $overlay0 $base $text  $mantle $mantle
+client.unfocused         $overlay0 $base $text  $mantle $mantle
+client.urgent            $peach    $base $peach $mantle  $mantle
+client.placeholder       $overlay0 $base $text  $mantle  $mantle
 client.background        $base
 
 bar {
@@ -239,3 +238,8 @@ bar {
   }
   status_command i3status
 }
+
+gaps inner 15
+gaps outer 20
+
+for_window [class="^.*"] border pixel 0
