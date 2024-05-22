@@ -31,7 +31,7 @@ bindsym $mod+Shift+w exec env GDK_DPI_SCALE=1.3 firefox
 bindsym $mod+Shift+f exec thunar
 bindsym $mod+m move workspace to output left
 
-exec --no-startup-id feh --bg-fill ~/Pictures/latte.jpg
+exec --no-startup-id feh --bg-fill ~/Pictures/latte.png
 exec --no-startup-id conky -c ~/conky.conf
 
 # Font for window titles. Will also be used by the bar unless a different font
