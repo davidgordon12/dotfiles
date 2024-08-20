@@ -26,10 +26,10 @@ bindsym Mod1+equal exec amixer set Master -q 5%+
 exec picom --no-fading-openclose --fade-in-step=1 --fade-out-step=1
 
 # Personal shortcuts
-bindsym $mod+Shift+w exec env GDK_DPI_SCALE=2 firefox
+bindsym $mod+Shift+w exec env GDK_DPI_SCALE=1.25 firefox
 bindsym $mod+m move workspace to output left
 
-exec --no-startup-id feh --bg-fill ~/Pictures/wp.jpg
+exec --no-startup-id feh --bg-fill ~/.config/city.png
 exec --no-startup-id conky -c ~/conky.conf
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -210,3 +210,8 @@ bar {
   }
   status_command i3status
 }
+
+gaps inner 10
+gaps outer 10
+
+for_window [class="^.*"] border pixel 3
